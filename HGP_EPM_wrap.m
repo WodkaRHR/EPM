@@ -1,6 +1,6 @@
 function [] =HGP_EPM_wrap(input_file_name, output_file_name)
     data = load(input_file_name);
-    B = data.A;
+    B = cast(data.A, 'double');
     B = triu(B, 1);
     N = size(B, 2);
     K = double(data.K);
