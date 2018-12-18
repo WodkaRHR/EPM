@@ -96,7 +96,7 @@ def _epm(A, num_coms, X=None, hierarchical=True, threshold=1.0, dir='/media/d/un
 
         # Read results
         result = 'm_i_k_dot_dot' if hierarchical else 'mi_dot_k'
-        return sp.csr_matrix(scipy.io.loadmat(output.name)[result]).T
+        return (sp.csr_matrix(scipy.io.loadmat(output.name)[result]).T > threshold).astype(int)
 
 
 # Test 
