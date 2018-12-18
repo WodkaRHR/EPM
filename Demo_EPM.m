@@ -145,7 +145,7 @@ save(['results/',dataset,'_B_',num2str(state),'.mat'], 'BBMask', 'BB');
 Datatype='Binary';
 Modeltype = 'Infinite';
 %Modeltype = 'Finite';
-IsDisplay = true;
+IsDisplay = false;
 
 %% HGP_EPM: Hierachical gamma process edge partition model
 % rand('state',state);

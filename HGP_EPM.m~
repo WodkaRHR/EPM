@@ -1,4 +1,4 @@
-function [AUCroc,AUCpr,F1,Phi,Lambda_KK,r_k,ProbAve,m_i_k_dot_dot,output,z, test]=HGP_EPM(B,K, idx_train,idx_test,Burnin, Collections, IsDisplay, Datatype, Modeltype)
+function [AUCroc,AUCpr,F1,Phi,Lambda_KK,r_k,ProbAve,m_i_k_dot_dot,output,z]=HGP_EPM(B,K, idx_train,idx_test,Burnin, Collections, IsDisplay, Datatype, Modeltype)
 %Code for Hierachical Gamma Process Edge Partition Model
 %Mingyuan Zhou, Oct, 2014
 %Input:
@@ -352,6 +352,7 @@ for iter=1:iterMax
         fprintf('Iter= %d, Number of Communities = %d \n',iter, output.K_positive(iter));
     end
 end
+fprintf('size(m_i_k_dot_dot) is %s\n', mat2str(size(m_i_k_dot_dot)));
 
 rate = ProbAve(idx_test);
 % zerorows = find((sum(BTrain_Mask.*(B+B'),2)==0&sum(~BTrain_Mask.*(B+B'),2)>0));
@@ -373,3 +374,4 @@ links = double(B(idx_test)>0);
 [prec, tpr, fpr, thresh] = prec_rec(rate, links,  'numThresh',3000);
 AUCpr = trapz([0;tpr],[1;prec]);
 F1= max(2*tpr.*prec./(tpr+prec));
+

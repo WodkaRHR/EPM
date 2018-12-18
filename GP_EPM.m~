@@ -282,7 +282,8 @@ end
 links = double(B(idx_test)>0);
 [~,dex]=sort(rate,'descend');
 [X,Y,T,AUCroc] = perfcurve(links,rate,1);
+x = [0:0.1:1];plot(x,x,'b--'), hold off; title(['AUCroc = ', num2str(AUCroc)])
 [prec, tpr, fpr, thresh] = prec_rec(rate, links,  'numThresh',3000);
 AUCpr = trapz([0;tpr],[1;prec]);
 F1= max(2*tpr.*prec./(tpr+prec));
-
+title(['AUCpr = ', num2str(AUCpr), '; F1 = ', num2str(F1)])
